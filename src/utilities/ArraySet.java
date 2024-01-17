@@ -40,25 +40,27 @@ public class ArraySet<E> implements List<E>, Set<E>
 	}
 
 	@Override
-	public boolean addAll(Collection<? extends E> c) 
-	{
-		//TODO idk how to do for each loop like this, no clue if it's right
-		for(E e : c) {
-			if(contains(e)) return false;
-		}
-		_list.addAll(c);
-		return true;
+	public boolean addAll(Collection<? extends E> c) {
+	    boolean isChanged = false;
+	    for (E e : c) {
+	        if (add(e)) {
+	            isChanged = true;
+	        }
+	    }
+	    return isChanged;
 	}
 
 	@Override
 	public boolean addAll(int index, Collection<? extends E> c) 
 	{
-		//TODO see method above
-		for(E e : c) {
-			if(contains(e)) return false;
-		}
-		_list.addAll(index, c);
-		return true;
+		boolean isChanged = false;
+	    for (E e : c) {
+	        if (add(index, e)) {
+	            isChanged = true;
+	            
+	        }
+	    }
+	    return isChanged;
 	}
 
 	/**
