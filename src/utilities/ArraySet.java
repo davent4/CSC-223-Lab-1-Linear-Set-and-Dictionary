@@ -2,7 +2,7 @@ package utilities;
 /**
  *  A data structure that guarantees uniqueness and is indexable
  *  
- * <p>Bugs: no tests yet so no clue plus its not done
+ * <p>Bugs: no tests yet so no clue
  *
  * @author Sage DeVore and Della Avent
  * @date 01/19/2024
@@ -51,13 +51,12 @@ public class ArraySet<E> implements List<E>, Set<E>
 	}
 
 	@Override
-	public boolean addAll(int index, Collection<? extends E> c) 
-	{
-		boolean isChanged = false;
-	    for (E e : c) {
-	        if (add(index, e)) {
+	public boolean addAll(int index, Collection<? extends E> c) {
+	    boolean isChanged = false;
+	    for (E element : c) {
+	        if (!contains(element)) {
+	            _list.add(index++, element);	//increment index after adding element
 	            isChanged = true;
-	            
 	        }
 	    }
 	    return isChanged;
@@ -85,7 +84,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 	@Override
 	public boolean contains(Object o) {
 		return _list.contains(o);
-		//TODO we could prob make more efficient if it's sorted but idk
 	}
 
 	/**
@@ -125,9 +123,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 	 */
 	@Override
 	public boolean remove(Object o) {
-		/*TODO do we need to make this one more efficient bc sorted? but removing
-		 * a specific object will still leave it sorted
-		 */
 		return _list.remove(o);
 	}
 
@@ -144,7 +139,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 	 */
 	@Override
 	public boolean removeAll(Collection<?> c) {
-		// same question as other remove
 		return _list.removeAll(c);
 	}
 
@@ -153,7 +147,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 	 */
 	@Override
 	public boolean retainAll(Collection<?> c) {
-		//does it need to be sorted again after this?
 		return _list.retainAll(c);
 	}
 
@@ -170,7 +163,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 	 */
 	@Override
 	public E get(int index) {
-		//TODO we could prob make more efficient since it's sorted?? do we care??
 		return _list.get(index);
 	}
 
@@ -195,7 +187,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 	 */
 	@Override
 	public int lastIndexOf(Object o) {
-		//TODO redundant bc its a set; should it throw exception?
 		return _list.lastIndexOf(o);
 	}
 
