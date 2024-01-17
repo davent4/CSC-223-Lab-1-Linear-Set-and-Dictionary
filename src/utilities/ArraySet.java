@@ -1,6 +1,6 @@
 package utilities;
 /**
- *  An ordered data structure that guarantees uniqueness 
+ *  A data structure that guarantees uniqueness and is indexable
  *  
  * <p>Bugs: no tests yet so no clue plus its not done
  *
