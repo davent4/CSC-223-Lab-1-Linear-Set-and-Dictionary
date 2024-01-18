@@ -1,9 +1,7 @@
 package utilities;
 /**
- *  A data structure that guarantees uniqueness and is indexable
+ * A data structure that guarantees uniqueness and is indexable
  *  
- * <p>Bugs: no tests yet so no clue
- *
  * @author Sage DeVore and Della Avent
  * @date 01/19/2024
  */
@@ -20,27 +18,58 @@ public class ArraySet<E> implements List<E>, Set<E>
 {
 	protected ArrayList<E> _list;
 
+	/**
+	 * default constructor
+	 */
 	public ArraySet()
 	{
 		_list = new ArrayList<E>();
 	}
-
-	@Override
-	public boolean add(E e) 
+	
+	/**
+	 * overloaded constructor
+	 * creates set with collection already included
+	 * @param Collection c
+	 */
+	public ArraySet(Collection<? extends E> c)
 	{
-		if(contains(e)) return false;
-		_list.add(e);
+		_list = new ArrayList<E>();
+		addAll(c);
+	}
+
+	/**
+	 * adds given element to end of the set
+	 * @param element e
+	 * @return boolean
+	 */
+	@Override
+	public boolean add(E element) 
+	{
+		if(contains(element)) return false;
+		_list.add(element);
 		return true;
 	}
 
+	/**
+	 * adds given element at given index
+	 * @param element e
+	 * @param int index
+	 */
 	@Override
 	public void add(int index, E element) 
 	{
 		if(!contains(element)) _list.add(index, element);
 	}
 
+	/**
+	 * adds given collection to end of the set
+	 * @param collection c
+	 * @return boolean
+	 */
 	@Override
-	public boolean addAll(Collection<? extends E> c) {
+	public boolean addAll(Collection<? extends E> c) 
+	{
+		if(c == null) return false;
 	    boolean isChanged = false;
 	    for (E e : c) {
 	        if (add(e)) {
@@ -50,8 +79,16 @@ public class ArraySet<E> implements List<E>, Set<E>
 	    return isChanged;
 	}
 
+	/**
+	 * adds given collection at given index
+	 * @param int index
+	 * @param collection c
+	 * @return boolean
+	 */
 	@Override
-	public boolean addAll(int index, Collection<? extends E> c) {
+	public boolean addAll(int index, Collection<? extends E> c) 
+	{
+		if(c == null) return false;
 	    boolean isChanged = false;
 	    for (E element : c) {
 	        if (!contains(element)) {
@@ -63,155 +100,235 @@ public class ArraySet<E> implements List<E>, Set<E>
 	}
 
 	/**
-	 * calls a delegate method
+	 * returns size of the set
+	 * @return int
 	 */
 	@Override
-	public int size() {
+	public int size() 
+	{
 		return _list.size();
 	}
 
 	/**
-	 * calls a delegate method
+	 * checks whether there is anything in set
+	 * @return boolean
 	 */
 	@Override
-	public boolean isEmpty() {
+	public boolean isEmpty() 
+	{
 		return _list.isEmpty();
 	}
 
 	/**
-	 * calls a delegate method
+	 * checks if set contains a given target
+	 * @param object o
+	 * @return boolean
 	 */
 	@Override
-	public boolean contains(Object o) {
+	public boolean contains(Object o) 
+	{
 		return _list.contains(o);
 	}
 
 	/**
-	 * calls a delegate method
+	 * checks if set contains the given targets
+	 * @param collection c
+	 * @return boolean
 	 */
 	@Override
-	public boolean containsAll(Collection<?> c) {
+	public boolean containsAll(Collection<?> c) 
+	{
 		return _list.containsAll(c);
 	}
 
 	/**
-	 * calls a delegate method
+	 * allows set to be iterated through by user
+	 * @return Iterator<E>
 	 */
 	@Override
-	public Iterator<E> iterator() {
+	public Iterator<E> iterator() 
+	{
 		return _list.iterator();
 	}
 
 	/**
-	 * calls a delegate method
+	 * returns set as an array
+	 * @return Object[]
 	 */
 	@Override
-	public Object[] toArray() {
+	public Object[] toArray() 
+	{
 		return _list.toArray();
 	}
 
 	/**
-	 * calls a delegate method
+	 * returns set as an array given a previous array
+	 * @return T[]
+	 * @param T[] a
 	 */
 	@Override
-	public <T> T[] toArray(T[] a) {
+	public <T> T[] toArray(T[] a) 
+	{
 		return _list.toArray(a);
 	}
 
-	/** (as of now)
-	 * calls a delegate method
+	/**
+	 * removes a specified object from set
+	 * @param object o
+	 * @return boolean
 	 */
 	@Override
-	public boolean remove(Object o) {
+	public boolean remove(Object o) 
+	{
 		return _list.remove(o);
 	}
 
 	/**
-	 * calls a delegate method
+	 * removes an object from set at the specified index
+	 * @param int index
+	 * @return E 
 	 */
 	@Override
-	public E remove(int index) {
+	public E remove(int index) 
+	{
 		return _list.remove(index);
 	}
 
-	/** TODO (as of now)
-	 * calls a delegate method
+	/**
+	 * removes specified objects from set
+	 * @param collection c
+	 * @return boolean
 	 */
 	@Override
-	public boolean removeAll(Collection<?> c) {
+	public boolean removeAll(Collection<?> c) 
+	{
 		return _list.removeAll(c);
 	}
 
-	/** TODO (as of now)
-	 * calls a delegate method
+	/**
+	 * removes everything but specified objects from set
+	 * @param collection c
+	 * @return boolean
 	 */
 	@Override
-	public boolean retainAll(Collection<?> c) {
+	public boolean retainAll(Collection<?> c) 
+	{
 		return _list.retainAll(c);
 	}
 
 	/**
-	 * calls a delegate method
+	 * empties the set
 	 */
 	@Override
-	public void clear() {
+	public void clear() 
+	{
 		_list.clear();
 	}
 
 	/**
-	 * calls a delegate method
+	 * returns object at specified index
+	 * @param int index
+	 * @return E
 	 */
 	@Override
-	public E get(int index) {
+	public E get(int index) 
+	{
 		return _list.get(index);
 	}
 
 	/**
-	 * calls a delegate method
+	 * changes the object at a specified index to the given element
+	 * @param E element
+	 * @param int index
+	 * @return E
 	 */
 	@Override
-	public E set(int index, E element) {
+	public E set(int index, E element) 
+	{
 		return _list.set(index, element);
 	}
 
 	/**
-	 * calls a delegate method
+	 * returns the index of a specified object
+	 * @param object o
+	 * @return int 
 	 */
 	@Override
-	public int indexOf(Object o) {
+	public int indexOf(Object o) 
+	{
 		return _list.indexOf(o);
 	}
 
-	/** (right now)
-	 * calls a delegate method
+	/**
+	 * returns the last index of a specified object
+	 * @param object o
+	 * @return int 
 	 */
 	@Override
-	public int lastIndexOf(Object o) {
+	public int lastIndexOf(Object o) 
+	{
 		return _list.lastIndexOf(o);
 	}
 
 	/**
-	 * calls a delegate method
+	 * (From Oracle.com)
+	 * Returns a list iterator over the elements in this list (in proper sequence).
+	 * @return ListIterator<E>
 	 */
 	@Override
-	public ListIterator<E> listIterator() {
+	public ListIterator<E> listIterator() 
+	{
 		return _list.listIterator();
 	}
 
 	/**
-	 * calls a delegate method
+	 * (From Oracle.com)
+	 * Returns a list iterator over the elements in this list starting at specified index
+	 * @param int index
+	 * @return ListIterator<E>
 	 */
 	@Override
-	public ListIterator<E> listIterator(int index) {
+	public ListIterator<E> listIterator(int index) 
+	{
 		return _list.listIterator(index);
 	}
 
 	/**
-	 * calls a delegate method
+	 * returns a shorter list beginning and ending at specified index
+	 * @param int fromIndex
+	 * @param int toIndex
+	 * @return List<E>
 	 */
 	@Override
-	public List<E> subList(int fromIndex, int toIndex) {
+	public List<E> subList(int fromIndex, int toIndex) 
+	{
 		return _list.subList(fromIndex, toIndex);
+	}
+		
+	/**
+	 * creates a spliterator
+	 */
+	@Override
+	public Spliterator<E> spliterator() 
+	{
+		return List.super.spliterator();
+	}
+	
+	/**
+	 * returns the set as a string
+	 * @return String
+	 */
+	@Override
+	public String toString() 
+	{
+		if(isEmpty()) return "";
+		
+		StringBuilder str = new StringBuilder();
+		for(int i = 0; i < size(); i++) {
+			str.append(get(i).toString());
+		}
+
+		return str.toString();
 	}
 
 
