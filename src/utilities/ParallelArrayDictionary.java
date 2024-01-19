@@ -39,43 +39,58 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 
 	@Override
 	public Value get(Object key) {
-		return _keys.contains(key);
-	}
-
-	@Override
-	public Value put(Key key, Value value) {
-		// TODO Auto-generated method stub
+		int index = _keys.indexOf(key);
+		if (index != -1) {
+				return _values.get(index);
+		}
 		return null;
 	}
 
 	@Override
+	public Value put(Key key, Value value) {
+		int index = _keys.indexOf(key);
+		if (index != -1) {
+				return _values.set(index, value);
+		} else {
+				_keys.add(key);
+				_values.add(value)
+				return null;
+		}
+	}
+
+	@Override
 	public Value remove(Object key) {
-		// TODO Auto-generated method stub
+		int index = _keys.indexOf(key);
+		if (index != -1) {
+				_keys.remove(index);
+				return _values.remove(index);
+		}
 		return null;
 	}
 
 	@Override
 	public void putAll(Map<? extends Key, ? extends Value> m) {
-		// TODO Auto-generated method stub
+		for (Map.Entry<? extends Key, ? extends Value> entry : m.entrySet()) {
 		
+				put (entry.getKey(), entry.getValue());
+		}
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		_keys.clear();
+		_values.clear();
 		
 	}
 
 	@Override
 	public Set<Key> keySet() {
-		// TODO Auto-generated method stub
-		return null;
+		return _keys;
 	}
 
 	@Override
 	public Collection<Value> values() {
-		// TODO Auto-generated method stub
-		return null;
+		return _values;
 	}
 
 	@Override
