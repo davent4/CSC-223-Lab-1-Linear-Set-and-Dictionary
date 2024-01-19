@@ -24,9 +24,6 @@ class ParallelArrayDictionaryTest {
 		assertNull(dictionary.get("nonexistant"));
 	}
 
-	/**
-	 * 
-	 */
 	@Test
 	void testPut() 
 	{

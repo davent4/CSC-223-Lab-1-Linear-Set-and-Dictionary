@@ -49,11 +49,21 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		return _keys.contains(key);
 	}
 
+	/**
+	 * checks if a given value is in the list
+	 * @param object value
+	 * @return boolean
+	 */
 	@Override
 	public boolean containsValue(Object value) {
 		return _values.contains(value);
 	}
 
+	/**
+	 * returns the value of a specified key, or null if its not there
+	 * @param object key
+	 * @return Value
+	 */
 	@Override
 	public Value get(Object key) {
 		int index = _keys.indexOf(key);
@@ -63,6 +73,12 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		return null;
 	}
 
+	/**
+	 * adds the given key at a specified value if key isn't already present
+	 * @param Key key
+	 * @param Value value
+	 * @return Value
+	 */
 	@Override
 	public Value put(Key key, Value value) {
 		int index = _keys.indexOf(key);
@@ -75,6 +91,11 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		}
 	}
 
+	/**
+	 * removes the specified key 
+	 * @param Object key
+	 * @return Value
+	 */
 	@Override
 	public Value remove(Object key) {
 		int index = _keys.indexOf(key);
@@ -85,6 +106,10 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		return null;
 	}
 
+	/**
+	 * adds given map to this map
+	 * @param map m
+	 */
 	@Override
 	public void putAll(Map<? extends Key, ? extends Value> m) {
 		for(Map.Entry<? extends Key, ? extends Value> entry : m.entrySet()) {
@@ -93,6 +118,9 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		}
 	}
 
+	/**
+	 * empties the set
+	 */
 	@Override
 	public void clear() {
 		_keys.clear();
@@ -100,16 +128,28 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		
 	}
 
+	/**
+	 * returns the set of key values
+	 * @return Set<Key>
+	 */
 	@Override
 	public Set<Key> keySet() {
 		return _keys;
 	}
 
+	/**
+	 * returns the list of values
+	 * @return Collection<Value>
+	 */
 	@Override
 	public Collection<Value> values() {
 		return _values;
 	}
 
+	/**
+	 * returns the entire map with both key and values
+	 * @return Set<Entry<Key, Value>>
+	 */
 	@Override
 	public Set<Entry<Key, Value>> entrySet() {
 		Set<Entry<Key, Value>> set = new ArraySet<>();
