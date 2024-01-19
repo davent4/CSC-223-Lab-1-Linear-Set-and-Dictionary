@@ -24,7 +24,7 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 
 	@Override
 	public boolean isEmpty() {
-		return keys.isEmpty()
+		return _keys.isEmpty();
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 				return _values.set(index, value);
 		} else {
 				_keys.add(key);
-				_values.add(value)
+				_values.add(value);
 				return null;
 		}
 	}
