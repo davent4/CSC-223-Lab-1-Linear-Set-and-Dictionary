@@ -19,32 +19,27 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return _keys.size();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return keys.isEmpty()
 	}
 
 	@Override
 	public boolean containsKey(Object key) {
-		// TODO Auto-generated method stub
-		return false;
+		return _keys.contains(key);
 	}
 
 	@Override
 	public boolean containsValue(Object value) {
-		// TODO Auto-generated method stub
-		return false;
+		return _values.contains(value);
 	}
 
 	@Override
 	public Value get(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return _keys.contains(key);
 	}
 
 	@Override
