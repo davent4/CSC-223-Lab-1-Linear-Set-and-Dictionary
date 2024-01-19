@@ -67,11 +67,11 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	public Value put(Key key, Value value) {
 		int index = _keys.indexOf(key);
 		if(index != -1) {
-				return _values.set(index, value);
+			return _values.set(index, value);
 		} else {
-				_keys.add(key);
-				_values.add(value);
-				return null;
+			_keys.add(key);
+			_values.add(value);
+			return null;
 		}
 	}
 

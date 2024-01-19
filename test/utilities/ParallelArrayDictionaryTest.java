@@ -32,8 +32,8 @@ class ParallelArrayDictionaryTest {
 	{
 		ParallelArrayDictionary<String, Integer> dictionary = new ParallelArrayDictionary<>();
 		assertNull(dictionary.put("two", 2));
-		assertEquals(2, dictionary.put("two", 2).intValue());
-		assertEquals(2, dictionary.get("two").intValue());
+		assertEquals(2, dictionary.put("two", 22).intValue());
+		assertEquals(22, dictionary.get("two").intValue());
 	}
 
 	@Test
@@ -45,15 +45,23 @@ class ParallelArrayDictionaryTest {
 		assertNull(dictionary.remove("nonexistant"));
 	}
 
-	// @Test
-	// void testPutAll() 
-	// {
-	// 	ParallelArrayDictionary<String, Integer> dictionary = new ParallelArrayDictionary<>();
-	// 	dictionary.put("four", 4);
+	@Test
+	 void testPutAll() 
+	 {
+	 	ParallelArrayDictionary<String, Integer> toAddDictionary = new ParallelArrayDictionary<>();
+	 	toAddDictionary.put("four", 4);
 
-	// 	ParallelArrayDictionary<String, Integer> oldDictionary = new ParallelArrayDictionary<>();
-
-	// }
+	 	ParallelArrayDictionary<String, Integer> currentDictionary = new ParallelArrayDictionary<>();
+	 	currentDictionary.put("one", 1);
+	 	
+	 	currentDictionary.putAll(toAddDictionary);
+	 	assertEquals(currentDictionary.size(), 2);
+	 	
+	 	toAddDictionary.put("one", 1);
+	 	
+	 	currentDictionary.putAll(toAddDictionary);
+	 	assertEquals(currentDictionary.size(), 2);
+	 }
 
 	@Test
 	void testClear() {
