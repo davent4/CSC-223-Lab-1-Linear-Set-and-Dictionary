@@ -24,19 +24,41 @@ class ParallelArrayDictionaryTest {
 		assertNull(dictionary.get("nonexistant"));
 	}
 
+	/**
+	 * 
+	 */
 	@Test
-	void testPut() {
+	void testPut() 
+	{
+		ParallelArrayDictionary<String, Integer> dictionary = new ParallelArrayDictionary<>();
+		assertNull(dictionary.put("two", 2));
+		assertEquals(2, dictionary.put("two", 22).intValue());
+		assertEquals(2, dictionary.get("two").intValue());
 	}
 
 	@Test
-	void testRemove() {
+	void testRemove() 
+	{
+		ParallelArrayDictionary<String, Integer> dictionary = new ParallelArrayDictionary<>();
+		dictionary.put("three", 3);
+		assertEquals(3, dictionary.remove("three").intValue());
+		assertNull(dictionary.remove("nonexistant"));
 	}
 
-	@Test
-	void testPutAll() {
-	}
+	// @Test
+	// void testPutAll() 
+	// {
+	// 	ParallelArrayDictionary<String, Integer> dictionary = new ParallelArrayDictionary<>();
+	// 	dictionary.put("four", 4);
+
+	// 	ParallelArrayDictionary<String, Integer> oldDictionary = new ParallelArrayDictionary<>();
+
+	// }
 
 	@Test
 	void testClear() {
+		ParallelArrayDictionary<String, Integer> dictionary = new ParallelArrayDictionary<>();
+		dictionary.put("seven", 7);
+		dictionary.clear();
 	}
 }
