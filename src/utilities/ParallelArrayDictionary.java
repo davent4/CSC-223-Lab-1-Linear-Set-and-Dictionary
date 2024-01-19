@@ -95,8 +95,10 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 
 	@Override
 	public Set<Entry<Key, Value>> entrySet() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		Set<Entry<Key, Value>> set = new ArraySet<>();
+		for (int i = 0; i < _keys.size(); i++) {
+			set.add(new AbstractMap.SimpleEntry<Key,Value>(_keys.get(i), _values.get(i)));
+		}
+		return set;
+		}
 
-}
