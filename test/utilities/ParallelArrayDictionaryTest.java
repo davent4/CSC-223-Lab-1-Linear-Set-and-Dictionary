@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 class ParallelArrayDictionaryTest
 {
 	@Test
-	void testParallelArrayDictionary() {
-		ParallelArrayDictionary<String, Integer> dictionary = new ParallelArrayDictionary<>();
+	void testParallelArrayDictionary() 
+	{	ParallelArrayDictionary<String, Integer> dictionary = new ParallelArrayDictionary<>();
 		assertNotNull(dictionary);
 		assertTrue(dictionary.isEmpty());
 		assertEquals(0, dictionary.size());
@@ -19,6 +19,10 @@ class ParallelArrayDictionaryTest
 	@Test
 	void testGet()
 	{
+		ParallelArrayDictionary<String, Integer> dictionary = new ParallelArrayDictionary<>();
+		dictionary.put("one",1);
+		assertEquals(1, dictionary.get("one"));
+		assertNull(dictionary.get("nonexistant"));
 	}
 
 	@Test
