@@ -8,9 +8,9 @@ import java.util.Set;
 
 public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 {
-    protected ArraySet<Key>    _keys;
-    protected ArrayList<Value> _values;
-	
+	protected ArraySet<Key>    _keys;
+	protected ArrayList<Value> _values;
+
 	public ParallelArrayDictionary()
 	{
 		_keys = new ArraySet<Key>();
@@ -24,7 +24,7 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 
 	@Override
 	public boolean isEmpty() {
-		return keys.isEmpty()
+		return _keys.isEmpty();
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	public Value get(Object key) {
 		int index = _keys.indexOf(key);
 		if (index != -1) {
-				return _values.get(index);
+			return _values.get(index);
 		}
 		return null;
 	}
@@ -50,11 +50,11 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	public Value put(Key key, Value value) {
 		int index = _keys.indexOf(key);
 		if (index != -1) {
-				return _values.set(index, value);
+			return _values.set(index, value);
 		} else {
-				_keys.add(key);
-				_values.add(value)
-				return null;
+			_keys.add(key);
+			_values.add(value);
+			return null;
 		}
 	}
 
@@ -62,8 +62,8 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	public Value remove(Object key) {
 		int index = _keys.indexOf(key);
 		if (index != -1) {
-				_keys.remove(index);
-				return _values.remove(index);
+			_keys.remove(index);
+			return _values.remove(index);
 		}
 		return null;
 	}
@@ -71,8 +71,7 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	@Override
 	public void putAll(Map<? extends Key, ? extends Value> m) {
 		for (Map.Entry<? extends Key, ? extends Value> entry : m.entrySet()) {
-		
-				put (entry.getKey(), entry.getValue());
+			put (entry.getKey(), entry.getValue());
 		}
 	}
 
@@ -80,7 +79,6 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	public void clear() {
 		_keys.clear();
 		_values.clear();
-		
 	}
 
 	@Override
@@ -100,5 +98,6 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 			set.add(new AbstractMap.SimpleEntry<Key,Value>(_keys.get(i), _values.get(i)));
 		}
 		return set;
-		}
+	}
+}
 
