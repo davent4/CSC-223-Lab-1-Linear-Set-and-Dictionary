@@ -323,11 +323,11 @@ public class ArraySet<E> implements List<E>, Set<E>
 	{
 		if(isEmpty()) return "";
 		
-		StringBuilder str = new StringBuilder();
+		StringBuilder str = new StringBuilder("[");
 		for(int i = 0; i < size(); i++) {
-			str.append(get(i).toString());
+			str.append(get(i).toString() + ", ");
 		}
-
+		str.append("]");
 		return str.toString();
 	}
 

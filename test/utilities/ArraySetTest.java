@@ -51,20 +51,20 @@ class ArraySetTest
 		ArraySet<Integer> set = new ArraySet<Integer>(Arrays.asList(2, 3));
 		
 		set.add(0, 1);
-		assertEquals(set.toString(), "123");
+		assertEquals(set.toString(), "[1, 2, 3, ]");
 		
 		set.add(0, 1);
-		assertEquals(set.toString(), "123");
+		assertEquals(set.toString(), "[1, 2, 3, ]");
 		
 		set.add(3, 4);
-		assertEquals(set.toString(), "1234");
+		assertEquals(set.toString(), "[1, 2, 3, 4, ]");
 		
 		set.add(2, 8);
-		assertEquals(set.toString(), "12834");
+		assertEquals(set.toString(), "[1, 2, 8, 3, 4, ]");
 		
 		set.add(10, 8);
 		set.add(-1, 8);
-		assertEquals(set.toString(), "12834");
+		assertEquals(set.toString(), "[1, 2, 8, 3, 4, ]");
 		
 		set.add(0, null);
 		assertEquals(set.size(), 6);
@@ -101,7 +101,7 @@ class ArraySetTest
 		assertTrue(set.addAll(6, new ArrayList<String>(Arrays.asList("h", "i", "j"))));
 		assertTrue(set.addAll(5, new ArrayList<String>(Arrays.asList("f"))));
 		
-		assertEquals(set.toString(), "abcdefghij");
+		assertEquals(set.toString(), "[a, b, c, d, e, f, g, h, i, j, ]");
 		
 		assertTrue(set.addAll(0, new ArrayList<String>(Arrays.asList("", "", ""))));
 		assertEquals(set.get(0), "");
