@@ -1,5 +1,10 @@
 package utilities;
-
+/**
+ * A mapping system that correlates a unique key to a possibly non-unique value
+ *  
+ * @author Sage DeVore and Della Avent
+ * @date 01/19/2024
+ */
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,23 +15,35 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 {
     protected ArraySet<Key>    _keys;
     protected ArrayList<Value> _values;
-	
+	/**
+	 * default constructor
+	 */
 	public ParallelArrayDictionary()
 	{
 		_keys = new ArraySet<Key>();
 		_values = new ArrayList<Value>();
 	}
-
+	/**
+	 * returns size of the set
+	 * @return int
+	 */
 	@Override
 	public int size() {
 		return _keys.size();
 	}
-
+	/**
+	 * checks whether there is anything in set
+	 * @return boolean
+	 */
 	@Override
 	public boolean isEmpty() {
 		return _keys.isEmpty();
 	}
-
+	/**
+	 * checks if a given key is in the set
+	 * @param object key
+	 * @return boolean
+	 */
 	@Override
 	public boolean containsKey(Object key) {
 		return _keys.contains(key);

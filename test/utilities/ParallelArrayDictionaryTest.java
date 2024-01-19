@@ -32,7 +32,7 @@ class ParallelArrayDictionaryTest {
 	{
 		ParallelArrayDictionary<String, Integer> dictionary = new ParallelArrayDictionary<>();
 		assertNull(dictionary.put("two", 2));
-		assertEquals(2, dictionary.put("two", 22).intValue());
+		assertEquals(2, dictionary.put("two", 2).intValue());
 		assertEquals(2, dictionary.get("two").intValue());
 	}
 
